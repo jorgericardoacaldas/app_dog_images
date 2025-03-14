@@ -69,6 +69,24 @@ class HomeScreen extends StatelessWidget {
                     fit: BoxFit.cover,
                   ),
                   const SizedBox(height: 20),
+                  
+                  ElevatedButton(
+                      onPressed: () {
+                        context.read<ImageBloc>().add(const LoadRandomImage());
+                      },
+                      style: ElevatedButton.styleFrom(
+                        backgroundColor: Colors.blueAccent,
+                        padding: const EdgeInsets.symmetric(horizontal: 40, vertical: 16),
+                        shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(30),
+                        ),
+                      ),
+                      child: const Text(
+                        'Gerar Imagem',
+                        style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
+                      ),
+                    ),
+                  const SizedBox(height: 20),
                   ElevatedButton(
                     onPressed: () {
                       context.read<ImageBloc>().add(const LoadImageHistory());
@@ -84,7 +102,7 @@ class HomeScreen extends StatelessWidget {
                       'Ver Histórico',
                       style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
                     ),
-                  ),
+                  ),  
                 ],
               ),
               error: (message) => Center(child: Text(message)),
@@ -111,6 +129,7 @@ class HomeScreen extends StatelessWidget {
           },
         ),
       ),
+    
     );
   }
 }
